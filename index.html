@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Page Accessible - Test GitHub</title>
+    <style>
+        /* Style pour le lien d'évitement (masqué sauf au focus) */
+        .skip-link {
+            position: absolute;
+            left: -10000px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+        .skip-link:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            background: #000;
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+        }
+        
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: auto; }
+        header, nav, main, footer { margin-bottom: 20px; }
+        nav ul { list-style: none; padding: 0; display: flex; gap: 15px; }
+        .error-example { color: #cc0000; border: 2px solid #cc0000; padding: 10px; margin-top: 20px; }
+        
+        /* Focus visible pour la navigation au clavier */
+        a:focus, button:focus { outline: 3px solid #005fcc; outline-offset: 2px; }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header>
+        <h1>Mon Site Accessible</h1>
+        <nav aria-label="Menu principal">
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+
+    <main id="main-content">
+        <section>
+            <h2>Pourquoi l'accessibilité ?</h2>
+            <p>L'accessibilité permet à tous, y compris aux personnes en situation de handicap, de naviguer efficacement.</p>
+            
+            <img src="https://via.placeholder.com/300" alt="Un exemple de graphique montrant une croissance positive de l'accessibilité web">
+        </section>
+
+        <section>
+            <h2>Contactez-nous</h2>
+            <form>
+                <div style="margin-bottom: 10px;">
+                    <label for="name">Nom complet :</label><br>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="email">Email :</label><br>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit">Envoyer le message</button>
+            </form>
+        </section>
+
+        <div class="error-example" role="alert">
+            <h3>Zone de test (À corriger)</h3>
+            <p>Ici, un lecteur d'écran annoncera immédiatement ce message grâce au <code>role="alert"</code>.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Site de test A11y</p>
+    </footer>
+
+</body>
+</html>
