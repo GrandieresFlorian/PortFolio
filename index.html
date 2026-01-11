@@ -3,216 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio - Compétences BUT Info</title>
+    <title>Portfolio BUT Informatique - Accueil</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 20px; }
-        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        h2 { color: #2980b9; margin-top: 40px; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; vertical-align: top; }
-        th { background-color: #f8f9fa; font-weight: bold; }
-        .ac-header { background-color: #eef7ff; width: 25%; }
-        /* Amélioration de l'accessibilité : focus visible */
-        a:focus, button:focus { outline: 3px solid #3498db; }
+        :root {
+            --primary: #2563eb;
+            --secondary: #64748b;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: #1e293b;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        main {
+            flex: 1;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid transparent;
+        }
+
+        .card:hover, .card:focus {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .card p {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Portfolio : Compétences Informatiques</h1>
-        <p>Récapitulatif des acquis et apprentissages critiques (AC) selon le référentiel BUT Info[cite: 1].</p>
+        <h1>Mon Portfolio de Compétences</h1>
+        <p>Bachelor Universitaire de Technologie en Informatique</p>
     </header>
 
     <main>
-        <section>
-            <h2>Compétence 1 : Réaliser le développement d'une application [cite: 2, 3]</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Apprentissage Critique</th>
-                        <th scope="col">Non Acquis</th>
-                        <th scope="col">En Cours</th>
-                        <th scope="col">Acquis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row" class="ac-header">AC1 : Implémenter des conceptions simples [cite: 7]</th>
-                        <td>Code non fonctionnel, noms de variables incohérents, pas d'indentation[cite: 4, 8].</td>
-                        <td>Code fonctionnel mais erreurs mineures, boucles ou variables inutiles[cite: 4, 8].</td>
-                        <td>Code bien structuré, sans redondance, documenté et performant[cite: 4, 8].</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="ac-header">AC2 : Élaborer des conceptions simples [cite: 9]</th>
-                        <td>Difficulté à élaborer un algorithme, conception incomplète[cite: 4, 10].</td>
-                        <td>Conception correcte mais perfectible, modélisation parfois confuse[cite: 4, 10].</td>
-                        <td>Conception claire, modélisation UML précise et complète[cite: 4, 10].</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="ac-header">AC3 : Essais et résultats [cite: 11]</th>
-                        <td>Absence de tests, incapacité à analyser les résultats[cite: 5, 12].</td>
-                        <td>Problèmes identifiés mais comportements imprévus restants[cite: 5, 12].</td>
-                        <td>Stratégie de tests complète, analyse approfondie et corrections pertinentes[cite: 5, 12].</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="ac-header">AC4 : Interfaces utilisateurs [cite: 13]</th>
-                        <td>Interface non fonctionnelle, non accessible ou crash[cite: 5, 14].</td>
-                        <td>Interface fonctionnelle mais peu intuitive, design rudimentaire[cite: 5, 14].</td>
-                        <td>Navigation fluide, respect des principes de design et d'accessibilité[cite: 5, 14].</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <p style="text-align: center; font-size: 1.2rem;">Sélectionnez une année pour consulter le détail des compétences acquises :</p>
+        
+        <nav class="grid" aria-label="Navigation par année">
+            <a href="annee1.html" class="card">
+                <h2>Première Année</h2>
+                <p>Découverte des bases du développement, de l'administration système et de la gestion de données.</p>
+                <strong>Consulter les 6 compétences →</strong>
+            </a>
 
-        <section>
-            <h2>Compétence 2 : Optimiser des applications [cite: 15]</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Apprentissage Critique</th>
-                        <th scope="col">Non Acquis</th>
-                        <th scope="col">En Cours</th>
-                        <th scope="col">Acquis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row" class="ac-header">AC1 : Analyser un problème [cite: 16]</th>
-                        <td>Absence de décomposition du problème[cite: 16].</td>
-                        <td>Analyse incomplète de certaines parties[cite: 16].</td>
-                        <td>Identification claire des éléments clés et structures adaptées[cite: 16].</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="ac-header">AC2 : Comparer des algorithmes [cite: 16]</th>
-                        <td>Aucun algorithme testé ou critères absents[cite: 16].</td>
-                        <td>Critères mal définis ou analyse non approfondie[cite: 16].</td>
-                        <td>Justification basée sur des critères mesurables (complexité)[cite: 16].</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>Compétence 3 : Administrer des systèmes complexes [cite: 17]</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Apprentissage Critique</th>
-                        <th scope="col">Non Acquis</th>
-                        <th scope="col">En Cours</th>
-                        <th scope="col">Acquis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row" class="ac-header">AC1 : Composants machine [cite: 20]</th>
-                        <td>Manque de compréhension de l'utilité des composants[cite: 20].</td>
-                        <td>Connaître les composants principaux (CPU, RAM)[cite: 20].</td>
-                        <td>Connaître l'utilité de chaque composant et savoir les placer[cite: 20].</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="ac-header">AC2 : Système multitâches [cite: 20]</th>
-                        <td>Incapacité à exécuter des tâches simples[cite: 20].</td>
-                        <td>Réussir à gérer les tâches, groupes et utilisateurs[cite: 20].</td>
-                        <td>Gérer les tâches en fond, trouver les PID et les manipuler[cite: 20].</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="ac-header">AC3 : Installation et configuration [cite: 21]</th>
-                        <td>Échec du téléversement ISO ou de création de manuel[cite: 21].</td>
-                        <td>Installation sans configuration avancée (utilisateurs, interface)[cite: 21].</td>
-                        <td>Maîtrise du terminal et configuration avancée des applications[cite: 21].</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>Compétence 4 : Gérer des données [cite: 22]</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Apprentissage Critique</th>
-                        <th scope="col">Non Acquis</th>
-                        <th scope="col">En Cours</th>
-                        <th scope="col">Acquis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row" class="ac-header">AC1 : Requêtes SQL [cite: 24]</th>
-                        <td>Incapacité à utiliser les bonnes requêtes ou l'interface[cite: 24].</td>
-                        <td>Requêtes compliquées, syntaxe limitée à la mise à jour[cite: 24].</td>
-                        <td>Requêtes fluides, concises avec gestion des clés étrangères[cite: 24].</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="ac-header">AC3 : Conception de BD [cite: 24]</th>
-                        <td>Non-respect des critères client ou du dictionnaire de données[cite: 24].</td>
-                        <td>Respect des conventions mais cardinalités inadaptées[cite: 24].</td>
-                        <td>Conception basée strictement sur les règles de gestion[cite: 24].</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>Compétence 5 : Conduire un projet [cite: 25]</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Apprentissage Critique</th>
-                        <th scope="col">Non Acquis</th>
-                        <th scope="col">En Cours</th>
-                        <th scope="col">Acquis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row" class="ac-header">AC1 & AC2 : Gestion de projet [cite: 26]</th>
-                        <td>Faible prise en compte des besoins, pas de support d'organisation[cite: 26].</td>
-                        <td>Utilisation maladroite de PERT et GANTT[cite: 26].</td>
-                        <td>Usage efficace de PERT/GANTT, réflexion sur les coûts et risques[cite: 26].</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="ac-header">AG5 : Développement solution [cite: 26, 27]</th>
-                        <td>Incapacité à expliquer les résultats des tests[cite: 26].</td>
-                        <td>Repérage des exigences fonctionnelles mais pas techniques[cite: 26].</td>
-                        <td>Correction des erreurs grâce aux tests sur spécifications[cite: 26].</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>Compétence 6 : Collaborer en équipe [cite: 28, 29]</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Apprentissage Critique</th>
-                        <th scope="col">Non Acquis</th>
-                        <th scope="col">En Cours</th>
-                        <th scope="col">Acquis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row" class="ac-header">AC1 : Écosystème numérique [cite: 30]</th>
-                        <td>Difficultés à s'intégrer efficacement dans une équipe[cite: 30].</td>
-                        <td>Début d'identification des interactions collectives[cite: 30].</td>
-                        <td>Collaboration efficace avec les différents membres[cite: 30].</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="ac-header">AC4 : Compétences interpersonnelles [cite: 30]</th>
-                        <td>Travail isolé, aucune interaction[cite: 30].</td>
-                        <td>Doit améliorer la communication avec l'équipe[cite: 30].</td>
-                        <td>Bonne écoute et suivi efficace des directives[cite: 30].</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+            <a href="annee2.html" class="card">
+                <h2>Deuxième Année</h2>
+                <p>Approfondissement, optimisation et conduite de projets complexes.</p>
+                <strong>Consulter les 6 compétences →</strong>
+            </a>
+        </nav>
     </main>
 
     <footer>
-        <p>&copy; 2026 - Mon Portfolio BUT Informatique</p>
+        <p>&copy; 2026 - Portfolio Grandieres Florian - BUT Informatique</p>
     </footer>
 
 </body>
