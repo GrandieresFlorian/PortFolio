@@ -3,270 +3,433 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Profil Professionnel - Portfolio BUT Informatique</title>
+    <title>Mon Profil Professionnel - Infographie</title>
     <style>
         :root {
             --primary: #2563eb;
-            --secondary: #64748b;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
-            --accent: #dbeafe;
-            --success: #f0fdf4;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --muted: #64748b;
+            --bg: #eef4ff;
+            --card: #ffffff;
+            --line: #dbeafe;
+            --accent: #38bdf8;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --violet: #8b5cf6;
         }
         * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: var(--bg);
-            color: #1e293b;
             margin: 0;
-            line-height: 1.6;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(56,189,248,.12), transparent 25%),
+                radial-gradient(circle at top left, rgba(37,99,235,.13), transparent 30%),
+                var(--bg);
+            color: var(--secondary);
+            line-height: 1.5;
+        }
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
         }
         header {
-            background: linear-gradient(135deg, var(--primary), #1d4ed8);
             color: white;
-            padding: 3rem 1rem;
-            text-align: center;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent));
+            padding: 42px 0 34px;
+            position: relative;
+            overflow: hidden;
         }
-        main {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 30px 20px 60px;
+        header::after {
+            content: "";
+            position: absolute;
+            inset: auto -80px -80px auto;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.12);
         }
         .home-link {
             display: inline-block;
-            margin-bottom: 25px;
+            color: white;
             text-decoration: none;
-            color: var(--primary);
             font-weight: 700;
+            margin-bottom: 18px;
+            opacity: .98;
         }
-        .intro {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 28px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            margin-bottom: 28px;
-        }
-        h1 { margin: 0 0 10px; }
-        h2 {
-            color: var(--primary);
-            margin-top: 0;
-            border-left: 5px solid var(--primary);
-            padding-left: 14px;
-        }
-        .grid {
+        .hero {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 22px;
-            margin-bottom: 28px;
+            grid-template-columns: 1.4fr .9fr;
+            gap: 28px;
+            align-items: center;
         }
-        .card {
-            background: var(--card-bg);
-            padding: 24px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border: 1px solid var(--border);
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.1;
         }
-        .card h3 {
-            margin-top: 0;
-            color: var(--primary);
+        .hero p {
+            margin: 0;
+            font-size: 1.08rem;
+            max-width: 850px;
         }
-        .pill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
+        .hero-card {
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.25);
+            backdrop-filter: blur(6px);
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 18px 32px rgba(0,0,0,.12);
         }
-        .pill {
-            background: var(--accent);
-            color: #1e3a8a;
+        .hero-card h2 {
+            font-size: 1rem;
+            margin: 0 0 10px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+        .role-target {
+            font-size: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            margin: 8px 0 14px;
+        }
+        .tag-list {
+            display: flex; flex-wrap: wrap; gap: 10px;
+        }
+        .tag {
             padding: 8px 12px;
             border-radius: 999px;
-            font-size: 0.95rem;
-            font-weight: 600;
+            background: rgba(255,255,255,.16);
+            border: 1px solid rgba(255,255,255,.28);
+            font-size: .92rem;
+            font-weight: 700;
         }
-        .section {
-            background: var(--card-bg);
-            padding: 28px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            margin-bottom: 28px;
+        main { padding: 28px 0 60px; }
+        section { margin-bottom: 24px; }
+        .panel {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 10px 24px rgba(37,99,235,.07);
         }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        .timeline {
+        .section-title {
+            margin: 0 0 16px;
+            color: var(--primary-dark);
+            font-size: 1.45rem;
+        }
+        .lead {
+            color: var(--muted);
+            margin-top: -5px;
+        }
+        .stats-grid {
             display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 16px;
         }
-        .timeline-item {
-            border-left: 4px solid var(--primary);
-            background: #f8fbff;
-            padding: 16px 18px;
-            border-radius: 10px;
-        }
-        .timeline-item strong {
-            color: var(--primary);
-            display: block;
-            margin-bottom: 6px;
-        }
-        .target-box {
-            background: var(--success);
-            border: 1px solid #bbf7d0;
+        .stat {
+            background: linear-gradient(180deg, #ffffff, #f8fbff);
+            border-radius: 22px;
+            border: 1px solid var(--line);
             padding: 20px;
-            border-radius: 14px;
-        }
-        footer {
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat::before {
+            content: "";
+            position: absolute;
+            top: -24px; right: -24px;
+            width: 70px; height: 70px;
+            border-radius: 50%;
+            background: rgba(37,99,235,.08);
+        }
+        .stat .num {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stat .label {
+            font-size: .95rem;
+            color: var(--muted);
+            font-weight: 700;
+        }
+        .journey {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            align-items: stretch;
+        }
+        .step {
+            background: #f8fbff;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 18px;
+            position: relative;
+        }
+        .step:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            right: -11px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            display: grid; place-items: center;
+            font-weight: 900;
+            box-shadow: 0 4px 12px rgba(37,99,235,.25);
+        }
+        .step .icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: grid; place-items: center;
+            color: white; font-size: 1.4rem; font-weight: 900;
+            margin-bottom: 12px;
+        }
+        .bg1 { background: var(--primary); }
+        .bg2 { background: var(--violet); }
+        .bg3 { background: var(--success); }
+        .bg4 { background: var(--warning); }
+        .step h3 { margin: 0 0 8px; font-size: 1.05rem; color: var(--secondary); }
+        .step p { margin: 0; color: var(--muted); font-size: .95rem; }
+        .twocol {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 18px;
+        }
+        .cards3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .mini-card {
+            background: #f8fbff;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 18px;
+        }
+        .mini-card h3 { margin: 0 0 10px; color: var(--primary-dark); }
+        .mini-card p, .mini-card li { color: var(--muted); }
+        .mini-card ul { margin: 0; padding-left: 18px; }
+        .target-box {
+            background: linear-gradient(145deg, #ecfdf5, #ffffff);
+            border: 1px solid #bbf7d0;
+            border-radius: 24px;
             padding: 22px;
-            color: var(--secondary);
-            font-size: 0.95rem;
+        }
+        .target-box strong { color: #166534; }
+        .source-list {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--muted);
+        }
+        .footer-note {
+            text-align: center;
+            color: var(--muted);
+            font-size: .92rem;
+            padding: 8px 0 30px;
+        }
+        @media (max-width: 980px) {
+            .hero, .twocol { grid-template-columns: 1fr; }
+            .stats-grid, .journey, .cards3 { grid-template-columns: repeat(2, 1fr); }
+            .step:not(:last-child)::after { display: none; }
+        }
+        @media (max-width: 640px) {
+            .stats-grid, .journey, .cards3 { grid-template-columns: 1fr; }
+            .panel { padding: 18px; border-radius: 18px; }
+            header { padding: 28px 0; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Mon profil professionnel</h1>
-        <p>Positionnement à l'issue du semestre 4 du BUT Informatique</p>
-    </header>
-    <main>
-        <a href="index.html" class="home-link">← Retour à l'accueil</a>
-
-        <section class="intro">
-            <h2>Qui je suis</h2>
-            <p>
-                À l'issue du semestre 4, mon profil s'oriente vers le <strong>développement d'outils métiers</strong>,
-                avec une affinité marquée pour les <strong>environnements industriels</strong>, les applications utiles au terrain
-                et les projets mêlant <strong>analyse du besoin, modélisation des données, développement logiciel</strong>
-                et <strong>échanges avec les utilisateurs</strong>.
-            </p>
-            <p>
-                Mon stage chez LTR Industries a confirmé cet intérêt : j'y ai conçu un outil de planification pour le laboratoire R&amp;D,
-                en partant du besoin métier jusqu'au prototype fonctionnel, avec une première version sous Oracle APEX puis
-                une version plus aboutie en Python connectée à une base Oracle.
-            </p>
-            <div class="pill-list">
-                <span class="pill">Développement Python</span>
-                <span class="pill">Oracle / SQL</span>
-                <span class="pill">Modélisation de données</span>
-                <span class="pill">Applications métiers</span>
-                <span class="pill">Contexte industriel</span>
-                <span class="pill">Analyse du besoin</span>
+        <div class="container">
+            <a class="home-link" href="index.html">← Retour à l'accueil</a>
+            <div class="hero">
+                <div>
+                    <h1>Mon profil professionnel</h1>
+                    <p>
+                        <strong>Positionnement à l'issue du semestre 4 :</strong> un profil orienté <strong>développement d'outils métiers</strong>,
+                        particulièrement à l'aise dans un <strong>environnement industriel</strong>, avec une démarche qui relie
+                        <strong>analyse du besoin</strong>, <strong>modélisation des données</strong>, <strong>développement logiciel</strong>
+                        et <strong>échanges avec les utilisateurs</strong>.
+                    </p>
+                </div>
+                <div class="hero-card">
+                    <h2>Cap professionnel</h2>
+                    <div class="role-target">Développeur d'applications métiers junior</div>
+                    <div class="tag-list">
+                        <span class="tag">Python</span>
+                        <span class="tag">Oracle / SQL</span>
+                        <span class="tag">Outils internes</span>
+                        <span class="tag">Planification</span>
+                        <span class="tag">Contexte industriel</span>
+                        <span class="tag">Analyse fonctionnelle</span>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </header>
 
-        <div class="grid">
-            <section class="card">
-                <h3>Missions que je souhaite exercer</h3>
-                <ul>
-                    <li>Concevoir et développer des <strong>applications métiers internes</strong> répondant à un besoin concret.</li>
-                    <li>Participer à la <strong>numérisation et à l'amélioration des processus</strong> dans un environnement industriel ou technique.</li>
-                    <li>Développer des <strong>interfaces de visualisation, de suivi ou de planification</strong> connectées à des bases de données.</li>
-                    <li>Contribuer à la <strong>structuration fonctionnelle</strong> d'un projet : recueil du besoin, cahier des charges, modélisation, tests.</li>
-                </ul>
+    <main>
+        <div class="container">
+            <section class="panel">
+                <h2 class="section-title">Infographie – vue d'ensemble</h2>
+                <p class="lead">Cette infographie synthétise ce que mon stage et mes compétences montrent de mon positionnement professionnel.</p>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="num">1</div>
+                        <div class="label">projet métier complet mené de l'analyse au prototype</div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">2</div>
+                        <div class="label">approches testées : Oracle APEX puis Python</div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">4</div>
+                        <div class="label">axes forts : besoin, données, développement, utilisateur</div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">3</div>
+                        <div class="label">postes visés à court terme en sortie de S4</div>
+                    </div>
+                </div>
             </section>
 
-            <section class="card">
-                <h3>Types de postes cohérents avec mon profil</h3>
-                <ul>
-                    <li><strong>Développeur d'applications métiers junior</strong></li>
-                    <li><strong>Développeur Python junior</strong></li>
-                    <li><strong>Assistant chef de projet informatique</strong> sur des outils internes</li>
-                    <li><strong>Développeur en informatique industrielle</strong> orienté outils de support, suivi ou pilotage</li>
-                </ul>
+            <section class="panel">
+                <h2 class="section-title">Ce que mon stage révèle de mon profil</h2>
+                <div class="journey">
+                    <div class="step">
+                        <div class="icon bg1">1</div>
+                        <h3>Analyser</h3>
+                        <p>Formaliser un besoin métier concret avec un cahier des charges et des échanges utilisateurs.</p>
+                    </div>
+                    <div class="step">
+                        <div class="icon bg2">2</div>
+                        <h3>Modéliser</h3>
+                        <p>Structurer les informations avec un MCD et préparer une base de données cohérente et exploitable.</p>
+                    </div>
+                    <div class="step">
+                        <div class="icon bg3">3</div>
+                        <h3>Développer</h3>
+                        <p>Transformer le besoin en prototype avec Oracle APEX puis en application plus souple en Python.</p>
+                    </div>
+                    <div class="step">
+                        <div class="icon bg4">4</div>
+                        <h3>Adapter</h3>
+                        <p>Comparer les solutions techniques, intégrer les retours terrain et viser un outil réellement utile.</p>
+                    </div>
+                </div>
             </section>
 
-            <section class="card">
-                <h3>Environnement professionnel recherché</h3>
-                <ul>
-                    <li>Une équipe où l'on travaille en lien direct avec les utilisateurs.</li>
-                    <li>Des projets concrets, avec un impact visible sur l'organisation du travail.</li>
-                    <li>Un cadre où la <strong>rigueur</strong>, la <strong>fiabilité</strong> et la <strong>compréhension du métier</strong> sont importantes.</li>
-                    <li>Un contexte qui me permet de progresser à la fois techniquement et méthodologiquement.</li>
+            <section class="twocol">
+                <div class="panel">
+                    <h2 class="section-title">Missions professionnelles que je souhaite exercer</h2>
+                    <div class="cards3">
+                        <div class="mini-card">
+                            <h3>Concevoir un outil métier</h3>
+                            <p>Créer des applications internes répondant à un besoin précis et directement utile aux utilisateurs.</p>
+                        </div>
+                        <div class="mini-card">
+                            <h3>Améliorer un processus</h3>
+                            <p>Participer à la numérisation et à l'optimisation d'organisations de travail dans un cadre technique ou industriel.</p>
+                        </div>
+                        <div class="mini-card">
+                            <h3>Relier données et interface</h3>
+                            <p>Développer des outils de visualisation, de suivi ou de planification connectés à des bases de données.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h2 class="section-title">Postes cohérents avec ce profil</h2>
+                    <div class="mini-card" style="margin-bottom: 12px;">
+                        <h3>1. Développeur d'applications métiers junior</h3>
+                        <p>Créer et faire évoluer des outils internes orientés usage métier.</p>
+                    </div>
+                    <div class="mini-card" style="margin-bottom: 12px;">
+                        <h3>2. Développeur Python junior</h3>
+                        <p>Développer des applications, automations ou interfaces liées à des données métier.</p>
+                    </div>
+                    <div class="mini-card">
+                        <h3>3. Développeur en informatique industrielle</h3>
+                        <p>Contribuer à des outils de suivi, pilotage ou planification en environnement industriel.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="twocol">
+                <div class="panel">
+                    <h2 class="section-title">Mes points forts visibles dans l'infographie</h2>
+                    <div class="cards3" style="grid-template-columns: 1fr 1fr;">
+                        <div class="mini-card">
+                            <h3>Analyse fonctionnelle</h3>
+                            <ul>
+                                <li>Comprendre un besoin réel</li>
+                                <li>Formaliser des attentes utilisateur</li>
+                                <li>Cadrer un projet dans un périmètre clair</li>
+                            </ul>
+                        </div>
+                        <div class="mini-card">
+                            <h3>Gestion des données</h3>
+                            <ul>
+                                <li>Modéliser une structure fiable</li>
+                                <li>Travailler avec SQL et Oracle</li>
+                                <li>Faire le lien entre conception et exploitation</li>
+                            </ul>
+                        </div>
+                        <div class="mini-card">
+                            <h3>Développement</h3>
+                            <ul>
+                                <li>Construire une application concrète</li>
+                                <li>Adapter l'outil au besoin métier</li>
+                                <li>Comparer plusieurs approches techniques</li>
+                            </ul>
+                        </div>
+                        <div class="mini-card">
+                            <h3>Relation utilisateur</h3>
+                            <ul>
+                                <li>Recueillir des retours terrain</li>
+                                <li>Ajuster les choix de conception</li>
+                                <li>Travailler de manière autonome mais encadrée</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h2 class="section-title">Environnement professionnel recherché</h2>
+                    <div class="mini-card" style="margin-bottom: 12px;">
+                        <h3>Ce qui me motive</h3>
+                        <ul>
+                            <li>Des projets concrets avec un impact visible sur l'organisation du travail</li>
+                            <li>Un lien direct avec les utilisateurs et leurs contraintes réelles</li>
+                            <li>Un cadre où rigueur, fiabilité et compréhension du métier sont essentielles</li>
+                            <li>Un environnement où je peux progresser techniquement et méthodologiquement</li>
+                        </ul>
+                    </div>
+                    <div class="target-box">
+                        <strong>Projection :</strong>
+                        Si je me place sur le marché du travail à la fin du semestre 4, je me présente comme un <strong>profil junior polyvalent</strong>,
+                        capable de contribuer à un projet concret en <strong>développement d'outils métiers</strong>, <strong>analyse fonctionnelle</strong>,
+                        <strong>structuration de données</strong> et <strong>prototype applicatif</strong>, avec une préférence pour les environnements
+                        industriels ou techniques.
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="section-title">Sources de l'infographie</h2>
+                <ul class="source-list">
+                    <li><strong>Consigne Portfolio Semestre 4 :</strong> demande d'un onglet « mon profil professionnel », fondé sur l'évaluation de compétences, le PPP et le contexte de stage.</li>
+                    <li><strong>Rapport de stage de deuxième année :</strong> projet de conception et développement d'un outil de planification pour le laboratoire R&amp;D chez LTR Industries.</li>
+                    <li><strong>Éléments mobilisés dans l'argumentation :</strong> cahier des charges, MCD, prototype Oracle APEX, prototype Python, travail avec les utilisateurs et intégration dans un environnement industriel.</li>
                 </ul>
             </section>
         </div>
-
-        <section class="section">
-            <h2>Pourquoi ce profil me correspond</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <strong>1. Analyser un besoin réel</strong>
-                    Lors de mon stage, j'ai commencé par formaliser les attentes du laboratoire à travers un cahier des charges.
-                    Cette étape m'a montré que j'apprécie particulièrement le fait de partir d'un besoin concret pour construire
-                    une solution adaptée.
-                </div>
-                <div class="timeline-item">
-                    <strong>2. Structurer les données et la logique métier</strong>
-                    La réalisation d'un MCD puis la mise en place d'une base exploitable m'ont permis de mobiliser mes compétences
-                    en modélisation et en gestion des données. J'aime organiser l'information pour rendre un outil fiable et évolutif.
-                </div>
-                <div class="timeline-item">
-                    <strong>3. Développer une solution utilisable</strong>
-                    Le développement d'un prototype avec Oracle APEX puis d'une application Python plus souple m'a conforté dans
-                    mon intérêt pour le développement d'interfaces et d'outils métiers. J'apprécie particulièrement la phase où
-                    la conception devient un outil concret pour les utilisateurs.
-                </div>
-                <div class="timeline-item">
-                    <strong>4. Travailler dans un cadre industriel</strong>
-                    Ce stage m'a permis de découvrir un environnement où les contraintes d'organisation, de lisibilité, d'intégration
-                    au système existant et d'utilité opérationnelle sont essentielles. Cela correspond à ma façon d'envisager
-                    l'informatique : une discipline au service d'un besoin réel.
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Compétences professionnelles mises en avant</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Conception et développement</h3>
-                    <p>
-                        Je suis capable de passer d'un besoin exprimé par des utilisateurs à une solution logicielle structurée,
-                        en mobilisant la conception fonctionnelle, la modélisation et le développement.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Gestion des données</h3>
-                    <p>
-                        J'ai développé une bonne base en SQL et en modélisation, utile pour construire des outils fiables,
-                        cohérents et connectés à des données métier.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Adaptation technique</h3>
-                    <p>
-                        Le passage d'Oracle APEX à Python m'a appris à comparer plusieurs solutions techniques, à identifier leurs
-                        limites et à choisir l'approche la plus pertinente selon le besoin.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Communication avec les utilisateurs</h3>
-                    <p>
-                        J'ai travaillé en lien avec le laboratoire et mon maître de stage, ce qui m'a permis d'améliorer ma capacité
-                        à recueillir des retours, ajuster une solution et expliquer mes choix.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Projection</h2>
-            <div class="target-box">
-                <p>
-                    Si je me plaçais sur le marché du travail à la fin du semestre 4, je me présenterais comme un <strong>profil junior polyvalent</strong>,
-                    déjà capable de contribuer à un projet informatique concret, notamment sur des missions de <strong>développement d'outils métiers,
-                    d'analyse fonctionnelle, de structuration de données</strong> et de <strong>prototype applicatif</strong>.
-                </p>
-                <p>
-                    Mon objectif à court terme serait d'intégrer un poste où je pourrais continuer à développer des applications utiles,
-                    de préférence dans un environnement technique ou industriel, tout en consolidant mes compétences en développement,
-                    en architecture logicielle et en gestion de projet.
-                </p>
-            </div>
-        </section>
     </main>
-    <footer>
-        <p>&copy; 2026 - Portfolio Grandieres Florian - Mon profil professionnel</p>
-    </footer>
+    <div class="footer-note">&copy; 2026 - Portfolio Grandieres Florian - Infographie du profil professionnel</div>
 </body>
 </html>
